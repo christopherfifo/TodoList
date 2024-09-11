@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="og:title" content="Christopherfifo">
+    <meta name="og:description" content="Desenvolvedor Web">
+    <meta name="og:image" content="https://avatars.githubusercontent.com/u/83225400?v=4">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./javascript/script.js" defer></script>
+    <title>TodoList</title>
+</head>
+<body>
+    
+<main class="todo_container">
+
+    <header class="todo_cabeca">
+        <h1 class="todo_title">Todo Avançado</h1>
+    </header>
+    <p class="todo_description">Adicione a sua tarefa</p>
+    <form id="todo_form">
+        <div class="todo_form-control">
+            <input type="text" class="todo-geral" id="todo_input" placeholder="Digite uma tarefa">
+            <button type="submit" id="todo_button" class="todo-btn"><i class="fa-thin fa-plus"></i></button>
+        </div>
+    </form>
+
+    <form id="edit_form" class="hide">
+        <p class="todo_description">Edite a sua tarefa</p>
+        <div class="todo_form-control">
+            <input type="text" class="todo-geral" id="edit_input">
+            <button type="submit" id="edit_button" class="todo-btn"><i class="fa-solid fa-check-double"></i></button>
+        </div>
+        <button id="cancel_edit_btn" class="todo-btn">Cancelar</button>
+    </form>
+
+    <div class="todo_bar" id="toolbar">
+        <div id="search">
+            <h4>Pesquisar</h4>
+            <form class="search_form">
+                <input type="text" class="todo-geral" id="search_input" placeholder="Pesquisar tarefa">
+                <button id="erase_button" class="todo-btn">
+                    <i class="fa-solid fa-delete-left"></i>
+                </button>
+            </form>
+        </div>
+        <div id="filter">
+            <h4>Filtrar</h4>
+            <form >
+                <select id="filter_select" class="todo-geral">
+                    <option value="all">Todos</option>
+                    <option value="completed">Completados</option>
+                    <option value="uncompleted">Não completados</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="todo_list" id="todo_list">
+        <!-- <div class="todo done">
+            <h3 class="todo_item">Estou fazendo alguma coisa...</h3>
+            <button class="complete_button todo-btn"><i class="fa-solid fa-check"></i></button>
+            <button class="edit_button todo-btn"><i class="fa-solid fa-edit"></i></button>
+            <button class="delete_button todo-btn"><i class="fa-solid fa-trash"></i></button>
+        </div>
+
+        <div class="todo done">
+            <h3 class="todo_item">Tarefa 2</h3>
+            <button class="complete_button todo-btn"><i class="fa-solid fa-check"></i></button>
+            <button class="edit_button todo-btn"><i class="fa-solid fa-edit"></i></button>
+            <button class="delete_button todo-btn"><i class="fa-solid fa-trash"></i></button>
+        </div> -->
+</main>
+
+
+
+</body>
+</html>
