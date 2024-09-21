@@ -1,24 +1,22 @@
+//$ variaveis
+
 const formAdd = document.getElementById("todo_form");
 const inputAdd = document.getElementById("todo_input");
-const btnAdd = document.getElementById("todo_button");
 
 const editForm = document.getElementById("edit_form");
 const editInput = document.getElementById("edit_input");
 const editBtn = document.getElementById("edit_button");
 const editCancel = document.getElementById("cancel_edit_btn");
 
-const toolbar = document.getElementById("toolbar");
-const pesquisar = document.getElementById("search");
 const pesquisarInput = document.getElementById("search_input");
 const pesquisarBtn = document.getElementById("erase_button");
 
-const filtro = document.getElementById("filter");
 const selecao = document.getElementById("filter_select");
 const lista = document.getElementById("todo_list");
 
 let oldTitle;
 
-//? adionar tarefa
+//- adionar tarefa
 
 const saveTodo = (text, done = 0, save = 1) => {
   const todo = document.createElement("div");
@@ -43,7 +41,7 @@ const saveTodo = (text, done = 0, save = 1) => {
   deletBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
   todo.appendChild(deletBtn);
 
-  //usando o localstorage
+  //?usando o localstorage
 
   if (done) {
     todo.classList.add("done");
@@ -58,23 +56,15 @@ const saveTodo = (text, done = 0, save = 1) => {
   inputAdd.value = "";
   inputAdd.focus();
 };
+//---------------------------------------------------------------------------------------------------------------
 
-//? editar tarefa
+//* editar tarefa
+
 const toggleEditForm = () => {
   editForm.classList.toggle("hide");
   formAdd.classList.toggle("hide");
   lista.classList.toggle("hide");
 };
-
-formAdd.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const inputValue = inputAdd.value;
-
-  if (inputValue) {
-    saveTodo(inputValue);
-  }
-});
 
 const updateTodo = (newTitle) => {
   const todos = document.querySelectorAll(".todo");
@@ -87,8 +77,10 @@ const updateTodo = (newTitle) => {
     }
   });
 };
+//*******************************************************************************************************************
 
-//?pesquisar tarefa
+//todo pesquisar tarefa
+
 const getSearchTodos = (search) => {
   const todos = document.querySelectorAll(".todo");
 
@@ -103,8 +95,9 @@ const getSearchTodos = (search) => {
     }
   });
 };
+//todo.................................................................................................................
 
-//? filtro
+//| filtro de tarefas
 
 const filterTodos = (filterValue) => {
   const todos = document.querySelectorAll(".todo");
@@ -137,8 +130,20 @@ const filterTodos = (filterValue) => {
       break;
   }
 };
+//|.....................................................................................................................
 
-//? evento no documento todo
+//! eventos de adição
+formAdd.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const inputValue = inputAdd.value;
+
+  if (inputValue) {
+    saveTodo(inputValue);
+  }
+});
+
+//! evento no documento todo
 document.addEventListener("click", (e) => {
   const targetEl = e.target;
   const parentEl = targetEl.closest("div"); // pega o elemento pai mais proximo
@@ -166,6 +171,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
+//! eventos de edição
 editCancel.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -184,8 +190,7 @@ editForm.addEventListener("submit", (e) => {
   toggleEditForm();
 });
 
-//! busca
-
+//! eventos de busca
 pesquisarInput.addEventListener("keyup", (e) => {
   const search = e.target.value;
 
@@ -199,16 +204,14 @@ pesquisarBtn.addEventListener("click", (e) => {
   pesquisarInput.dispatchEvent(new Event("keyup")); //dispara um evento
 });
 
-//! filtro
-
+//! eventos de filtro
 selecao.addEventListener("change", (e) => {
   const filterValue = e.target.value; //elemento que foi clicado
 
   filterTodos(filterValue);
 });
 
-//! localstorage
-
+//! eventos de localstorage
 const getTodosLocalStorage = () => {
   const todos = JSON.parse(localStorage.getItem("todos")) || []; //? pega o item do localstorage e transforma em um array ou retorna um array vazio
   return todos;
